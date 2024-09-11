@@ -1,6 +1,7 @@
 #ifndef GRADE_H
 #define GRADE_H
 #include <vector>
+#include <stdexcept>
 #include "student_info.h"
 using namespace std;
 

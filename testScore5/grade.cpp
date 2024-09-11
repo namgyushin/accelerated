@@ -1,5 +1,3 @@
-#include <vector>
-#include <stdexcept>
 #include "median.h"
 #include "grade.h"
 
