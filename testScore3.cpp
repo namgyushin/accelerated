@@ -3,9 +3,27 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <stdexcept>
 #include <iomanip>
 #include <ios>
 using namespace std;
+
+istream& read_hw(istream& in, vector<double>& homeworks)
+{
+    if (in)
+    {
+        homeworks.clear();
+
+        double homework;
+        while (in >> homework)
+        {
+            homeworks.push_back(homework);
+        }
+
+        in.clear();
+    }
+    return in;
+}
 
 double median(const vector<double>& vec)
 {
@@ -32,6 +50,11 @@ double grade(double midterm, double finalterm, double homework)
 
 double grade(double midterm, double finalterm, const vector<double>& homeworks)
 {
+    if (homeworks.size() == 0)
+    {
+        throw domain_error("no homework");
+    }
+
     double median = ::median(homeworks);
 
     return grade(midterm, finalterm, median);
@@ -50,25 +73,24 @@ int main()
     cin >> midterm >> finalterm;
 
     vector<double> homeworks;
+    read_hw(cin, homeworks);
 
-    double homework;
-    while (cin >> homework)
+    try 
     {
-        homeworks.push_back(homework);      //벡터에 입력하는 함수 push_back
+        //double median = ::median(homeworks);
+        //const double finalScore = grade(midterm, finalterm, median);
+        const double finalScore = grade(midterm, finalterm, homeworks);
+
+        streamsize prec = cout.precision();
+        cout << " Your final score : " << setprecision(3) << finalScore 
+        << setprecision(prec) << endl;
     }
-
-    if (homeworks.size() == 0)
+    catch (const domain_error& e)
     {
-        cerr << "try input homework again" << endl;
+        cerr << e.what() << endl;
         return 1;
     }
 
-    //double median = ::median(homeworks);
-    //const double finalScore = grade(midterm, finalterm, median);
-    const double finalScore = grade(midterm, finalterm, homeworks);
-
-    std::streamsize prec = cout.precision();
-    cout << " Your final score : " << setprecision(3) << finalScore 
-    << setprecision(prec) << endl;
+    
     return 0;
 }
