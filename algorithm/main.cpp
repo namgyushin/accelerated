@@ -1,23 +1,18 @@
 #include<bits/stdc++.h>
 // #include <iostream>
 // #include <vector>
-// #include <numeric>
+// #include <algorithm>
+// #include <iterator>
 using namespace std;
 
 int main()
 {
-    vector<double> vec = {1.1, 2.2, 3.3, 4.4, 5.5};
+    vector<int> vec = {3, 1, 2, 3, 4, 3, 3, 5 };
 
-    double sum;
-    // sum = 0.0;
-    // for (double d : vec)
-    // {
-    //     sum = sum + d;
-    // }
+    vector<int>::iterator it = remove(vec.begin(), vec.end(), 3);
+    vec.erase(it, vec.end());
 
-    sum = accumulate(vec.cbegin(), vec.cend(), 0.0);    //누적 합
-    
-    cout << "sum : " << sum << endl;
-
+    copy(vec.cbegin(), vec.cend(), ostream_iterator<int>(cout, " "));
+    cout << endl;
     return 0;
 }
