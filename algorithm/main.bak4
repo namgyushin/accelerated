@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int nums[] = {60, 10, 90, 100, 30, 70, 50, 20, 40, 80};
+    vector<int> v1(nums, nums + 10);
+
+    int nums2[] = {70, 50};
+    vector<int> v2(nums2, nums2 + 2);
+
+    auto it = v1.cbegin();
+    while (it != v1.cend())
+    {
+        it = search(it, v1.cend(), v2.cbegin(), v2.cend());
+
+        if (it != v1.cend())
+        {
+            cout << "found " << *it << endl;
+            ++it;
+        }
+        
+    }
+
+    return 0;
+}

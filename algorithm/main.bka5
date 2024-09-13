@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// #include <iterator>
+using namespace std;
+
+int square(int num)
+{
+    return num * num;
+}
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    vector<int> vec = {1, 2, 3, 4, 5};
+
+    vector<int> result;
+
+    // for (auto it = vec.cbegin(); it != vec.cend(); ++it)
+    // {
+    //     result.push_back(square(*it));
+    // }
+    transform(vec.cbegin(), vec.cend(), back_inserter (result), square);
+
+    // for (int n : result)
+    // {
+    //     cout << n << endl;
+    // }
+
+
+    // 알고리즘을 잘쓰면 반복문을 안써도 된다
+    copy(result.cbegin(), result.cend(), ostream_iterator<int>(cout, "\n"));
+    cout << endl;
+
+    return 0;
+}

@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+using namespace std;
+
+int main()
+{
+    int nums[] = {1, 2, 3, 4, 5};
+    vector<int> vec(nums, nums+ 5);
+
+    if (equal(nums, nums + 5, vec.cbegin()))
+    {
+        cout << "nums1 and vec have a same elements" << endl;
+    }
+    else
+    {
+        cout << "nums1 and vec don't have a same elements" << endl;
+    }
+
+            //crbegin, crend -> r은 reverse(역순으로)
+    for (vector<int>::const_reverse_iterator it = vec.crbegin(); it != vec.crend(); ++it)
+    {
+        cout << *it << endl;
+    }
+
+    return 0;
+}

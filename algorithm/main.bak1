@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+using namespace std;
+
+int main()
+{
+    int nums1[5] = {1, 2, 3, 4, 5};
+    int nums2[5];
+
+    //nums2 = nums1;    X
+    copy(nums1, nums1 + 5, nums2);
+    for (int i = 0; i != 5; ++i)
+    {
+        cout << nums2[i] << endl;
+    }
+
+    //vector<int> vec(nums1, nums1 + 5);
+    vector<int> vec;
+    // for (int i = 0; i != 5; ++i)
+    // {
+    //     vec.push_back(nums1[i]);
+    // }
+    //copy(nums1, nums1 + 5, vec.cend()); X
+    copy(nums1, nums1 + 5, back_inserter(vec));
+
+    for (auto it = vec.cbegin(); it != vec.cend(); ++it)
+    {
+        cout << *it << endl;
+    }
+    
+
+    return 0;
+}
